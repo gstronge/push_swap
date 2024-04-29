@@ -248,49 +248,15 @@ int	ft_check_binary(t_list *a, int shift)
 	return (temp & comp);//remove the temp from this function when i am sure everyt hing works fine =======================================
 }
 
-int	ft_check_sorted(t_list *a, t_list *b)
+int	ft_check_sorted(t_list *a)
 {
-	if (a != NULL)
-	{
-		while (a != NULL && a->next != NULL)
-		{
-			if (a->data > a->next->data)
-				return (0);
-			a = a->next;
-		}
-		return (1);
-	}
-	else
-	{
-		while (b != NULL && b->next != NULL)
-		{
-			if (b->data > b->next->data)
-				return (0);
-			b = b->next;
-		}
-	}
-	return (1);
-}
-
-int	ft_check_ordered(t_list *a, t_list *b)
-{
-	t_list	*temp;
-
-	temp = a;
-	if (a->data > b->data)
+	if (a == NULL)
 		return (0);
-	while (temp != NULL && temp->next != NULL && b != NULL)
+	while (a != NULL && a->next != NULL)
 	{
-		if (temp->data < temp->next->data)
+		if (a->data > a->next->data)
 			return (0);
-		temp = temp->next;
-	}
-	temp = b;
-	while (temp != NULL && temp->next != NULL && a != NULL)
-	{
-		if (temp->data > temp->next->data)
-			return (0);
-		temp = temp->next;
+		a = a->next;
 	}
 	return (1);
 }
@@ -301,7 +267,6 @@ int main(int argc, char **argv)
     t_list	*b;
 	int		shift;
 	int		i;
-	int counter = 0;// ============ REMOVE =================== REMOVE =================== REMOVE =========================
  
 	a = NULL;
 	b = NULL;
@@ -312,11 +277,8 @@ int main(int argc, char **argv)
 	{
 		a = ft_create_a(a, argc, argv);
 		a = ft_add_index(a);
-		// ft_print_both(a, b);// ============ REMOVE =================== REMOVE =================== REMOVE =========================
-		// while (shift < 6)
-		while (!ft_check_sorted(a, b))
+		while (!ft_check_sorted(a))
 		{
-			// printf("\ncounter main loop>%d<\n", counter);// ============ REMOVE =================== REMOVE =================== REMOVE ========================= 
 			if (b == NULL)
 			{
 				while (i < argc)
@@ -326,13 +288,10 @@ int main(int argc, char **argv)
 					else 
 						a = ft_rotate(a, 'a');
 					i++;
-					counter++;// ============ REMOVE =================== REMOVE =================== REMOVE =========================
 				}
-				// ft_print_both(a, b);// ============ REMOVE =================== REMOVE =================== REMOVE =========================
 				while (b != NULL)
 				{
 					a = ft_push_to(&b, &a, 'a');
-					counter++;// ============ REMOVE =================== REMOVE =================== REMOVE =========================
 				}
 			}
 			shift++;
