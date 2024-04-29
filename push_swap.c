@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_push_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 10:37:59 by gstronge          #+#    #+#             */
-/*   Updated: 2024/04/26 11:21:38 by gstronge         ###   ########.fr       */
+/*   Created: 2024/04/28 19:57:37 by gstronge          #+#    #+#             */
+/*   Updated: 2024/04/28 19:57:37 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 
 // =========== REMOVE ==================================================================================
@@ -17,41 +18,32 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-
+#include <limits.h>
+ 
 // =========== PUT IN HEADER FILE ======================================================================
 typedef	struct s_list
 {
 	int				data;
-	int				size; // am I using this? =======================================================
+	int				index;
 	struct s_list	*next;
 }	t_list;
 // =========== PUT IN HEADER FILE ======================================================================
 
-// =========== REMOVE ==================================================================================
-void	ft_print_both(t_list *a, t_list *b)
-{	
-	printf("\n=========\n");
-	while (a != NULL || b != NULL)
-	{
-		if (a != NULL)
-		{
-			printf("%d  ", a->data);
-			a = a->next;
-		}
-		else
-			printf("x  ");
-		if (b != NULL)
-		{
-			printf("%d\n", b->data);
-			b = b->next;
-		}
-		else
-			printf("x\n");
-	}
-	printf("======================================\n\n");
-}
-// =========== REMOVE ==================================================================================
-
+ 
+//  int    ft_largest_num(t_list *a)
+//  {
+//      int largest;
+ 
+//      largest = -2147483648;
+//      while (a != NULL)
+//      {
+//          if (a->data > largest)
+//              largest = a->data;
+//          a = a->next;
+//      }
+//      return (largest);
+//  }
+ 
 int	ft_atoi(char *str)
 {
 	long	num;
@@ -76,7 +68,7 @@ int	ft_atoi(char *str)
 	}
 	return (num * negative);
 }
-
+ 
 int	ft_add_node_end(t_list *current, int size, char *str)
 {
 	t_list	*new;
@@ -88,9 +80,69 @@ int	ft_add_node_end(t_list *current, int size, char *str)
 	return (size + 1);
 }
 
+// ============================= NEW =======================================================================
+// ft_next_smallest(a, smallest)
+// {
+// 	t_list	*head;
+
+// 	head = a;
+// 	while (a != NULL)
+// 	{
+// 		if (a->data == smallest)
+// 			return(smallest);
+// 	}
+// }
+// ============================= NEW =======================================================================
+
+// ============================= NEW =======================================================================
+t_list	*ft_add_index(t_list *a)
+{
+	t_list *current_node;
+	int	smallest;
+	int	largest;
+	int	num;
+
+	current_node = a;
+	smallest = current_node->data;
+	largest = current_node->data;
+	num = 1;
+	while (current_node != NULL)
+	{
+		if (current_node->data < smallest)
+			smallest = current_node->data;
+		current_node = current_node->next;
+	}
+	current_node = a;
+	while (current_node != NULL)
+	{
+		if (current_node->data > largest)
+			largest = current_node->data;
+		current_node = current_node->next;
+	}
+	smallest--;//what happens if smallest is the smallest int! ==================================================
+	while (smallest != largest)
+	{
+		current_node = a;
+		smallest++;
+		while (current_node != NULL)
+		{
+			if (current_node->data == smallest)
+			{
+				current_node->index = num;
+				num +=1;
+				break;
+			}
+			current_node = current_node->next;
+		}
+
+	}
+	return(a);
+}
+// ============================= NEW =======================================================================
+
 t_list	*ft_create_a(t_list *a, int argc, char **argv)
 {
-	t_list	*current;
+	t_list    *current;
 	int size;
 	int i;
 
@@ -109,100 +161,184 @@ t_list	*ft_create_a(t_list *a, int argc, char **argv)
 		current = current->next;
 		i++;
 	}
+	// ============================= NEW =======================================================================
+	// a = ft_add_index(a, argc);
+	// ============================= NEW =======================================================================
 	return (a);
 }
+ 
+ 
 
-t_list	*ft_rotate(t_list *list, char c)
+// ============================= NEW =======================================================================
+t_list	*ft_swap(t_list *list, char c)
 {
 	t_list	*head;
-	t_list	*tail;
 
+	head = list->next;
+	list->next = head->next;
+	head->next = list;
+	write(1, "s", 1);
+	if (c != 'x')
+		write(1, &c, 1);
+	write(1, "\n", 1);
+	return (list);
+}
+// ============================= NEW =======================================================================
+ 
+t_list	*ft_rotate(t_list *list, char c)
+{
+	t_list    *head;
+	t_list    *tail;
+
+	write(1, "r", 1);// move all writes to bottom of functions!
+	if (c != 'x')
+		write(1, &c, 1);
+	write(1, "\n", 1);
 	if (list == NULL || list->next == NULL)
-		return (NULL);
+		return (list);//used to be NULL and I changed it to list ============= might be able to reduce opperations by not writing write!!!
 	tail = list;
 	head = list->next;
 	while (list->next != NULL)
 		list = list->next;
 	list->next = tail;
 	tail->next = NULL;
-	write(1, "r", 1);
-	write(1, &c, 1);
 	return (head);
 }
-
-t_list	*ft_swap(t_list *list, char c)
-{
-	int		temp;
-
-	if (list == NULL || list->next == NULL)
-		return (NULL);
-	temp = list->data;
-	list->data = list->next->data;
-	list->next->data = temp;
-	write(1, "s", 1);
-	write(1, &c, 1);
-	return (list);
-}
-
-
+ 
+ // t_list    *ft_rev_rotate(t_list *list, char c)
+ // {
+ //     t_list    *head;
+ //     t_list    *tail;
+ 
+ //     if (list == NULL || list->next == NULL)
+ //         return (NULL);
+ //     tail = list;
+ //     while (tail->next->next != NULL)
+ //         tail = tail->next;
+ //     head = tail->next;
+ //     head->next = list;
+ //     tail->next = NULL;
+ //     write(1, "rr", 2);
+ //     write(1, &c, 1);
+ //     return (head);
+ // }
+ 
 t_list	*ft_push_to(t_list **from, t_list **to, char c)
 {
-	t_list	*pushed_node;
-
-	if (*from == NULL)
-		return (*to);
+	t_list    *pushed_node;
+ 
+	// if (*from == NULL)
+	// 	return (*to);
 	pushed_node = *from;
 	*from = (*from)->next;
 	pushed_node->next = *to;
 	write(1, "p", 1);
 	write(1, &c, 1);
+	write(1, "\n", 1);
 	return (pushed_node);
 }
 
-t_list	*ft_rev_rotate(t_list *list, char c)
+int	ft_check_binary(t_list *a, int shift)
 {
-	t_list	*head;
-	t_list	*tail;
+	int	comp;
+	int	temp;
 
-	if (list == NULL || list->next == NULL)
-		return (NULL);
-	tail = list;
-	while (tail->next->next != NULL)
-		tail = tail->next;
-	head = tail->next;
-	head->next = list;
-	tail->next = NULL;
-	write(1, "rr", 2);
-	write(1, &c, 1);
-	return (head);
+	comp = 1;
+	temp = a->index >> shift;
+	return (temp & comp);//remove the temp from this function when i am sure everyt hing works fine =======================================
 }
+
+int	ft_check_sorted(t_list *a, t_list *b)
+{
+	if (a != NULL)
+	{
+		while (a != NULL && a->next != NULL)
+		{
+			if (a->data > a->next->data)
+				return (0);
+			a = a->next;
+		}
+		return (1);
+	}
+	else
+	{
+		while (b != NULL && b->next != NULL)
+		{
+			if (b->data > b->next->data)
+				return (0);
+			b = b->next;
+		}
+	}
+	return (1);
+}
+
+int	ft_check_ordered(t_list *a, t_list *b)
+{
+	t_list	*temp;
+
+	temp = a;
+	if (a->data > b->data)
+		return (0);
+	while (temp != NULL && temp->next != NULL && b != NULL)
+	{
+		if (temp->data < temp->next->data)
+			return (0);
+		temp = temp->next;
+	}
+	temp = b;
+	while (temp != NULL && temp->next != NULL && a != NULL)
+	{
+		if (temp->data > temp->next->data)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
+
 int main(int argc, char **argv)
 {
-	t_list	*a;
-	t_list	*b;
+    t_list	*a;
+    t_list	*b;
+	int		shift;
+	int		i;
 	int counter = 0;// ============ REMOVE =================== REMOVE =================== REMOVE =========================
-
+ 
 	a = NULL;
 	b = NULL;
+	shift = 0;
+	i = 1;
+	//ft_errors(argc, argv); //make error check ====================================================================================
 	if (argc > 1)
 	{
 		a = ft_create_a(a, argc, argv);
+		a = ft_add_index(a);
+		// ft_print_both(a, b);// ============ REMOVE =================== REMOVE =================== REMOVE =========================
+		// while (shift < 6)
+		while (!ft_check_sorted(a, b))
+		{
+			// printf("\ncounter main loop>%d<\n", counter);// ============ REMOVE =================== REMOVE =================== REMOVE ========================= 
+			if (b == NULL)
+			{
+				while (i < argc)
+				{
+					if (!ft_check_binary(a, shift))//one of these with a ! the other without ========================================
+						b = ft_push_to(&a, &b, 'b');
+					else 
+						a = ft_rotate(a, 'a');
+					i++;
+					counter++;// ============ REMOVE =================== REMOVE =================== REMOVE =========================
+				}
+				// ft_print_both(a, b);// ============ REMOVE =================== REMOVE =================== REMOVE =========================
+				while (b != NULL)
+				{
+					a = ft_push_to(&b, &a, 'a');
+					counter++;// ============ REMOVE =================== REMOVE =================== REMOVE =========================
+				}
+			}
+			shift++;
+			i = 1;
+		}
 	}
-
-// ============ REMOVE =================== REMOVE ================= REMOVE =========================
-	ft_print_both(a, b);
-// // ============ REMOVE =================== REMOVE =================== REMOVE ====================
-
-		b = ft_push_to(&a, &b, 'b');
-
-// ============ REMOVE =================== REMOVE ================= REMOVE =========================
-	ft_print_both(a, b);
-// // ============ REMOVE =================== REMOVE =================== REMOVE =========================
-
-
-	printf("\n%d\n", counter);// ============ REMOVE =================== REMOVE =================== REMOVE ========================= 
-
-
-	ft_free(a, b);
+	// ft_free(a, b);
 	// free(b);
 }
