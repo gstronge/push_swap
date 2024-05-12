@@ -6,13 +6,13 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:50:38 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/07 14:24:57 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:40:43 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *str, t_list *a)
+int	ft_atoi_ps(char *str, t_list *a)
 {
 	long	num;
 	int		negative;
@@ -48,7 +48,7 @@ void	ft_add_node(t_list *current, char *str, t_list *a)
 	new = (t_list *)malloc(1 * sizeof(t_list));
 	current->next = new;
 	new->next = NULL;
-	new->data = ft_atoi(str, a);
+	new->data = ft_atoi_ps(str, a);
 }
 
 int	ft_atoi_split(char *str, t_list *a, char **strstr)
