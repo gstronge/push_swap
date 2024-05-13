@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:07:58 by gstronge          #+#    #+#             */
-/*   Updated: 2024/03/15 11:44:44 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:36:08 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static	size_t	ft_end(char const *s1, char const *set, size_t len, size_t i)
 
 	j = 0;
 	end = 0;
-	while (i >= 0)
+	while (i != 0)
 	{
 		while (set[j] != '\0')
 		{

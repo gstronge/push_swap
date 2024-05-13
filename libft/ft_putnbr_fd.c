@@ -14,30 +14,28 @@
 
 static	void	ft_write_to_file(long num, int fd)
 {
-	size_t	bytes;
 	char	temp;
 
 	if (num > 0)
 	{
 		temp = (num % 10) + '0';
 		ft_write_to_file(num / 10, fd);
-		bytes = write(fd, &temp, 1);
+		write(fd, &temp, 1);
 	}
 }
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	bytes;
 	long	num;
 
 	num = n;
 	if (num < 0)
 	{
 		num = -num;
-		bytes = write(fd, "-", 1);
+		write(fd, "-", 1);
 	}
 	if (num == 0)
-		bytes = write(fd, "0", 1);
+		write(fd, "0", 1);
 	if (num > 0)
 		ft_write_to_file(num, fd);
 }

@@ -6,18 +6,11 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:57:37 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/10 20:02:40 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/13 16:21:22 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	leaks(void)
-// {
-// 	system("leaks push_swap");
-// }
-
-// atexit(leaks);
 
 int	main(int argc, char **argv)
 {

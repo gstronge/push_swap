@@ -15,10 +15,9 @@
 void	ft_putchar_fd(char c, int fd)
 {
 	size_t	count;
-	size_t	bytes;
 
 	count = 1;
-	bytes = write(fd, &c, count);
+	write(fd, &c, count);
 }
 
 // #include <stdio.h>

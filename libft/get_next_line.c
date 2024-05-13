@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:34:31 by gstronge          #+#    #+#             */
-/*   Updated: 2024/04/03 12:47:00 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:38:50 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ char	*get_next_line(int fd)
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*str;
 	int			bytes;
-	int			make_buffer;
 
 	str = NULL;
 	bytes = 0;
-	make_buffer = 0;
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
 	while (bytes >= 0)

@@ -15,13 +15,12 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	size_t	count;
-	size_t	bytes;
 
 	count = 0;
 	while (s[count] != '\0')
 		count++;
-	bytes = write(fd, s, count);
-	bytes = write(fd, "\n", 1);
+	write(fd, s, count);
+	write(fd, "\n", 1);
 }
 
 // #include <stdio.h>

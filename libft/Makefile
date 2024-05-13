@@ -6,7 +6,7 @@
 #    By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 13:34:20 by gstronge          #+#    #+#              #
-#    Updated: 2024/05/10 17:53:50 by gstronge         ###   ########.fr        #
+#    Updated: 2024/05/13 16:02:43 by gstronge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ CFLAGS	= -Wall -Werror -Wextra
 all:		$(NAME)
 
 $(NAME):	$(OBJS) $(HEAD)
-	ar rsc $(NAME) $(OBJS)
+	ar rsc $(NAME) $(OBJS) $(HEAD)
 
 clean:
 	rm -f $(OBJS) $(OBJSB)

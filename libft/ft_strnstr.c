@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:46:17 by gstronge          #+#    #+#             */
-/*   Updated: 2024/03/14 11:31:55 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:34:14 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ static	int	ft_check_needle(const char *haystack, const char *needle, int i)
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	unsigned long	i;
-	unsigned long	j;
 	char			*ptr;
 	unsigned long	nlen;
 
 	i = 0;
-	j = 0;
 	nlen = 0;
 	while (needle[nlen] != '\0')
 		nlen++;

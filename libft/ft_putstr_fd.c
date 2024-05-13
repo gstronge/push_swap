@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:02:45 by gstronge          #+#    #+#             */
-/*   Updated: 2024/03/11 13:06:09 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:37:53 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	count;
-	size_t	bytes;
 
 	count = 0;
 	while (s[count] != '\0')
 		count++;
-	bytes = write(fd, s, count);
+	write(fd, s, count);
 }
 
 // #include <stdio.h>

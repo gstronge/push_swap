@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:28:56 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/11 19:00:41 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:36:21 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,4 @@ t_list	*ft_push_to_b(t_list **from, t_list **to)
 	*from = (*from)->next;
 	pushed_node->next = *to;
 	return (pushed_node);
-}
-
-void	ft_result(t_list *a, t_list *b)
-{
-	if (b == NULL && ft_check_order(a, 'a'))
-		write(1, "OK", 2);
-	else
-		write(1, "KO", 2);
-	write(1, "\n", 1);
 }
