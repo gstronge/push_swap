@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:28:46 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/07 12:28:47 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:22:39 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_list	*ft_three_nodes(t_list *list, char c)
 
 void	ft_push_smallest(t_list **a, t_list **b, int num)
 {
-	while ((*a)->next->next != NULL && (*a)->next->next->next != NULL)
+	while ((*a)->next->next->next != NULL)
 	{
 		if ((*a)->index <= num - 3)
 			*b = ft_push_to(a, b, 'b');
@@ -57,7 +57,7 @@ void	ft_arrange_lists(t_list **a, t_list **b)
 		}
 		else if (!ft_check_order(*a, 'a'))
 			*a = ft_rev_rotate(*a, 'a');
-		else if ((*b)->next != NULL)
+		else
 			*b = ft_rev_rotate(*b, 'b');
 	}
 }

@@ -6,17 +6,17 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:26:45 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/07 14:26:50 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:28:06 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_forward_steps(t_list *list, int lower, int upper, int forward)
+int	ft_forward_steps(t_list *list, int num, int forward)
 {
 	while (list != NULL)
 	{
-		if (list->index >= lower && list->index <= upper)
+		if (list->index == num)
 			break ;
 		list = list->next;
 		forward++;
@@ -24,14 +24,14 @@ int	ft_forward_steps(t_list *list, int lower, int upper, int forward)
 	return (forward);
 }
 
-int	ft_reverse_steps(t_list *list, int lower, int upper, int reverse)
+int	ft_reverse_steps(t_list *list, int num, int reverse)
 {
 	int	i;
 
 	i = 0;
 	while (list != NULL)
 	{
-		if (list->index >= lower && list->index <= upper)
+		if (list->index == num)
 			reverse = i;
 		list = list->next;
 		i++;
@@ -52,15 +52,15 @@ t_list	*ft_rot_to_num(t_list *list, int num, char direction)
 	return (list);
 }
 
-char	calc_rot_dir(t_list *list, int lower, int upper)
+char	calc_rot_dir(t_list *list, int num)
 {
 	int	forward;
 	int	reverse;
 
 	forward = 0;
 	reverse = 0;
-	forward = ft_forward_steps(list, lower, upper, forward);
-	reverse = ft_reverse_steps(list, lower, upper, reverse);
+	forward = ft_forward_steps(list, num, forward);
+	reverse = ft_reverse_steps(list, num, reverse);
 	if (forward > reverse)
 		return ('r');
 	else

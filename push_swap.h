@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:55:28 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/11 15:52:18 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:16:35 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include "libft/libft.h"
 
 typedef struct s_list
 {
@@ -45,10 +44,10 @@ t_list	*ft_six_nodes(t_list *a, t_list *b, int num);
 int		ft_check_order(t_list *list, char c);
 int		ft_a_to_b(t_list **a, t_list **b, int num);
 int		ft_b_to_a(t_list **a, t_list **b, int num);
-int		ft_forward_steps(t_list *list, int lower, int upper, int forward);
-int		ft_reverse_steps(t_list *list, int lower, int upper, int reverse);
+int		ft_forward_steps(t_list *list, int num, int forward);
+int		ft_reverse_steps(t_list *list, int num, int reverse);
 t_list	*ft_rot_to_num(t_list *list, int num, char direction);
-char	calc_rot_dir(t_list *list, int lower, int upper);
+char	calc_rot_dir(t_list *list, int num);
 int		ft_largest_num(t_list *list, char c);
 int		ft_smallest_num(t_list *list);
 int		ft_next_smallest(t_list *a, int min, int next_min, int largest);

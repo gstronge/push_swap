@@ -6,11 +6,11 @@
 #    By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 13:34:20 by gstronge          #+#    #+#              #
-#    Updated: 2024/05/13 16:02:43 by gstronge         ###   ########.fr        #
+#    Updated: 2024/05/13 16:40:20 by gstronge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC		= gcc
+CC		= cc
 NAME	= libft.a
 SRCS	= ft_isprint.c ft_memcpy.c ft_strchr.c ft_strncmp.c ft_atoi.c \
 ft_itoa.c ft_memmove.c ft_strdup.c ft_strnstr.c ft_bzero.c ft_memset.c \

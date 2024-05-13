@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:35:54 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/07 14:25:53 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:17:03 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_b_to_a(t_list **a, t_list **b, int num)
 		}
 		else
 		{
-			direction = calc_rot_dir(*b, num, num);
+			direction = calc_rot_dir(*b, num);
 			*b = ft_rot_to_num(*b, num, direction);
 			*a = ft_push_to(b, a, 'a');
 		}

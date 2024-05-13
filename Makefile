@@ -6,7 +6,7 @@
 #    By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/17 13:11:37 by gstronge          #+#    #+#              #
-#    Updated: 2024/05/13 12:22:05 by gstronge         ###   ########.fr        #
+#    Updated: 2024/05/13 16:54:06 by gstronge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(NAME): $(OBJS_M) $(OBJS) $(HEAD)
 
 bonus: $(NAME_B)
 
-$(NAME_B): $(OBJS) $(OBJS_B) $(HEAD_B) $(LIBFT)
+$(NAME_B): $(OBJS) $(OBJS_B) $(HEAD_B) $(HEAD) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME_B) $(OBJS) $(OBJS_B) $(LIBFT)
 
 $(LIBFT):
