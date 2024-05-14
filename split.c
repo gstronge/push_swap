@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:28:58 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/07 12:28:59 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/14 11:38:07 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_copystr(char const *s, char c, char **strstr, int index)
 	return (i);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split_ps(char const *s, char c)
 {
 	int		strnum;
 	char	**strstr;

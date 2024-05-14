@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 20:03:00 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/14 11:00:01 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/14 11:38:27 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_make_stack(t_list **a, int num, int argc, char **argv)
 	input = NULL;
 	if (argc == 2)
 	{
-		input = ft_split(argv[1], ' ');
+		input = ft_split_ps(argv[1], ' ');
 		argc = 1;
 		while (input[argc] != NULL)
 			argc++;

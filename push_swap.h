@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:55:28 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/13 19:16:35 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/14 11:38:33 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_list
 char	**ft_free_array(char **strstr);
 int		ft_strnum(char const *s, char c, int strnum);
 int		ft_copystr(char const *s, char c, char **strstr, int index);
-char	**ft_split(char const *s, char c);
+char	**ft_split_ps(char const *s, char c);
 t_list	*ft_swap(t_list *list, char c);
 t_list	*ft_rotate(t_list *list, char c);
 t_list	*ft_rev_rotate(t_list *list, char c);
