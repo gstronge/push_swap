@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:50:38 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/10 19:40:43 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/14 10:07:29 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	ft_add_node(t_list *current, char *str, t_list *a)
 	t_list	*new;
 
 	new = (t_list *)malloc(1 * sizeof(t_list));
+	if (new == NULL)
+		ft_print_error(a);
 	current->next = new;
 	new->next = NULL;
 	new->data = ft_atoi_ps(str, a);
@@ -85,6 +87,11 @@ void	ft_add_node_split(t_list *current, char *str, t_list *a, char **strstr)
 	t_list	*new;
 
 	new = (t_list *)malloc(1 * sizeof(t_list));
+	if (new == NULL)
+	{
+		ft_free_array(strstr);
+		ft_print_error(a);
+	}
 	current->next = new;
 	new->next = NULL;
 	new->data = ft_atoi_split(str, a, strstr);
