@@ -6,7 +6,7 @@
 /*   By: gstronge <gstronge@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 20:03:00 by gstronge          #+#    #+#             */
-/*   Updated: 2024/05/14 10:11:16 by gstronge         ###   ########.fr       */
+/*   Updated: 2024/05/14 11:00:01 by gstronge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_create_a(t_list **a, int argc, char **strstr)
 	size = 1;
 	*a = (t_list *)malloc(1 * sizeof(t_list));
 	if (*a == NULL)
-		ft_print_error(a);
+		ft_print_error(*a);
 	current = *a;
 	(*a)->data = ft_atoi_ps(&strstr[size][0], *a);
 	(*a)->next = NULL;
@@ -46,7 +46,7 @@ int	ft_create_a_split(t_list **a, int argc, char **strstr)
 	if (*a == NULL)
 	{
 		ft_free_array(strstr);
-		ft_print_error(a);
+		ft_print_error(*a);
 	}
 	current = *a;
 	(*a)->data = ft_atoi_split(&strstr[size][0], *a, strstr);
